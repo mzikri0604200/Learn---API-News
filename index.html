@@ -13,7 +13,7 @@
     <header class="bg-dark py-3">
       <div class="container">
         <div class="row justify-content-center text-white">
-          <div class="col-12 text-center"><h1>TOP HEADLINE</h1></div>
+          <div class="col-12 text-center"><h1 class="m-0">TOP HEADLINE</h1></div>
         </div>
       </div>
     </header>
@@ -46,7 +46,7 @@
               <div>
                 <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(data.publishedAt).utc().format('lll')}</small>
               </div>
-              <h1 class="fs-6 lh-base m-0 text-white">${data.title.slice(0, 92) + '...'}</h1>
+               <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${data.url}" class="stretched-link text-reset text-decoration-none"> ${data.title.slice(0, 92) + '...'}</a></h1>
             </div>
           </div>
         </div>
