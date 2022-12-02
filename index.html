@@ -18,6 +18,33 @@
       </div>
     </header>
     <div class="container py-3">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-100 rounded-1" />
+              <div class="my-2">
+                <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">Dec 1, 2022 7:17 AM</small>
+              </div>
+              <h1 class="fs-6 m-0 lh-base">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex">
+                <div>
+                  <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-100 rounded-1" />
+                </div>
+                <div>
+                  <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-100 rounded-1" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row listTeams"></div>
     </div>
 
@@ -28,25 +55,23 @@
       var template = '';
 
       $.ajax({
-        url: 'https://newsapi.org/v2/top-headlines',
+        url: 'https://berita-indo-api.vercel.app/v1/cnn-news/',
         type: 'get',
         dataType: 'json',
-        data: {
-          apiKey: 'da9f0946ef8f4b73bd26229125b70fa5',
-          country: 'id',
-        },
         success: function (result) {
-          let article = result.articles;
-          console.log();
-          $.each(article, function (i, data) {
-            template += `<div class="col-lg-4 mb-4">
+          let article = result.data;
+          console.log(article);
+
+          let limitArr = article.slice(0, 5);
+          $.each(limitArr, function (i, data) {
+            template += `<div class="col-lg-4 col-md-6 mb-4">
           <div class="card border-0 h-100 rounded-2">
-            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${data.urlToImage}" class="rounded-2 h-100" style="object-fit:cover;" alt="${data.title}" />
+            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${data.image.small}" class="rounded-2 h-100" style="object-fit:cover;" alt="${data.title}" />
             <div class="card-img-overlay rounded-2 d-flex flex-column justify-content-between">
               <div>
-                <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(data.publishedAt).utc().format('lll')}</small>
+                <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(data.isoDate).utc().format('lll')}</small>
               </div>
-               <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${data.url}" class="stretched-link text-reset text-decoration-none"> ${data.title.slice(0, 92) + '...'}</a></h1>
+               <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${data.link}" class="stretched-link text-reset text-decoration-none">${data.title}</a></h1>
             </div>
           </div>
         </div>
