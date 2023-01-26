@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API NEWS - GET</title>
+    <title>NEWS - GET</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/741/741867.png" />
@@ -18,7 +18,7 @@
       </div>
     </header>
     <div class="container py-3">
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
@@ -31,16 +31,22 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex">
-                <div>
-                  <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-100 rounded-1" />
-                </div>
-                <div>
-                  <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-100 rounded-1" />
+          <div class="row">
+            <div class="col-lg-6 mb-3">
+              <div class="card border-0 rounded-2">
+                <img
+                  onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'"
+                  src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90"
+                  class="w-100 rounded-1"
+                  style="object-fit: cover"
+                />
+                <div class="card-img-overlay rounded-2 d-flex flex-column justify-content-between">
+                  <div>
+                    <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">Dec 1, 2022 7:17 AM</small>
+                  </div>
                 </div>
               </div>
+              <small class="lh-base">Daftar Harga BBM Terbaru Pertamina, Shell...</small>
             </div>
           </div>
         </div>
@@ -50,36 +56,58 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> -->
     <script>
-      var template = '';
-
-      $.ajax({
-        url: 'https://berita-indo-api.vercel.app/v1/cnn-news/',
-        type: 'get',
-        dataType: 'json',
-        success: function (result) {
-          let article = result.data;
-          console.log(article);
-
-          let limitArr = article.slice(0, 5);
-          $.each(limitArr, function (i, data) {
-            template += `<div class="col-lg-4 col-md-6 mb-4">
-          <div class="card border-0 h-100 rounded-2">
-            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${data.image.small}" class="rounded-2 h-100" style="object-fit:cover;" alt="${data.title}" />
-            <div class="card-img-overlay rounded-2 d-flex flex-column justify-content-between">
-              <div>
-                <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(data.isoDate).utc().format('lll')}</small>
+      fetch('https://berita-indo-api.vercel.app/v1/cnn-news/')
+        .then((response) => response.json())
+        .then((response) => {
+          const article = response.data.slice(0, 5);
+          // console.log(article);
+          let template = '';
+          article.forEach((element) => {
+            template += `
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card border-0 h-100 rounded-2">
+                <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${element.image.small}" class="rounded-2 h-100" style="object-fit:cover;" alt="${element.title}" />
+                <div class="card-img-overlay overlay rounded-2 d-flex flex-column justify-content-between">
+                  <div>
+                    <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(element.isoDate).utc().format('lll')}</small>
+                  </div>
+                  <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${element.link}" class="stretched-link text-reset text-decoration-none">${element.title}</a></h1>
+                </div>
               </div>
-               <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${data.link}" class="stretched-link text-reset text-decoration-none">${data.title}</a></h1>
-            </div>
-          </div>
-        </div>
-            `;
+            </div>`;
           });
-          $('.listTeams').html(template);
-        },
-      });
+
+          const listTeams = document.querySelector('.listTeams');
+          listTeams.innerHTML = template;
+        });
+
+      // $.ajax({
+      //   url: 'https://berita-indo-api.vercel.app/v1/cnn-news/',
+      //   type: 'get',
+      //   dataType: 'json',
+      //   success: function (result) {
+      //     let article = result.data;
+
+      //     let limitArr = article.slice(0, 5);
+      //     $.each(limitArr, function (i, data) {
+      //       template += `<div class="col-lg-4 col-md-6 mb-4">
+      //     <div class="card border-0 h-100 rounded-2">
+      //       <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${data.image.small}" class="rounded-2 h-100" style="object-fit:cover;" alt="${data.title}" />
+      //       <div class="card-img-overlay overlay rounded-2 d-flex flex-column justify-content-between">
+      //         <div>
+      //           <small class="p-2 rounded-1 fw-semibold fs-10 bg-light">${moment(data.isoDate).utc().format('lll')}</small>
+      //         </div>
+      //          <h1 class="fs-6 lh-base m-0 text-white"><a target="_blank" href="${data.link}" class="stretched-link text-reset text-decoration-none">${data.title}</a></h1>
+      //       </div>
+      //     </div>
+      //   </div>
+      //       `;
+      //     });
+      //     $('.listTeams').html(template);
+      //   },
+      // });
     </script>
   </body>
 </html>
