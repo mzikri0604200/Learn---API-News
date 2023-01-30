@@ -5,9 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEWS - GET</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="dist/output.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/741/741867.png" />
+
+    <style>
+      .kentut-pagination {
+        bottom: -25px;
+      }
+
+      .kentut-class-page.is-active {
+        background: #14b8a6;
+        transform: scale(1.3);
+      }
+
+      .kentut-class-page {
+        background: #cbd5e1;
+        height: 8px;
+        width: 8px;
+      }
+
+      .splide__arrow--next {
+        right: 0rem;
+      }
+      .splide__arrow--prev {
+        left: inherit;
+        right: 3rem;
+      }
+      .splide__arrow:disabled {
+        opacity: 0.2;
+      }
+      .splide__arrow svg {
+        fill: #14b8a6;
+        height: 1.2em;
+        width: 1.2em;
+      }
+      .splide__arrow {
+        background: #99f6e4;
+        top: 5%;
+        transform: translateY(-50%);
+      }
+    </style>
   </head>
   <body>
     <header class="container mx-auto my-3 bg-">
@@ -15,29 +54,18 @@
     </header>
     <main class="container mx-auto">
       <div class="flex flex-wrap mb-6">
-        <div class="w-full lg:w-3/4 px-4 lg:px-2">
-          <div class="grid grid-cols-2 gap-4 listTeams1">
-            <!-- <div class="rounded-md bg-white shadow-sm overflow-hidden">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-full lg:h-96 object-cover" />
-              <div class="p-2.5">
-                <div class="mb-1">
-                  <small class="text-slate-400 text-xs font-semibold">27 Jan 2023, 09.36</small>
-                </div>
-                <h1 class="font-bold">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</h1>
+        <div class="w-full lg:w-3/5 px-4 lg:px-2">
+          <div class="rounded-md overflow-hidden relative">
+            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${e.image.small}" class="w-full" style="object-fit: cover" alt="${e.title}" />
+            <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
+              <div>
+                <small class="px-2 py-1 text-slate-900 bg-slate-100/80 text-xs font-bold rounded-sm">27 Jan 2023, 09.36</small>
               </div>
+              <h1 class="text-md text-white font-bold sm:text-sm"><a target="_blank" href="${e.link}"> Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP </a></h1>
             </div>
-            <div class="rounded-md bg-white shadow-sm overflow-hidden">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="w-full lg:h-96 object-cover" />
-              <div class="p-2.5">
-                <div class="mb-1">
-                  <small class="text-slate-400 text-xs font-semibold">27 Jan 2023, 09.36</small>
-                </div>
-                <h1 class="font-bold">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</h1>
-              </div>
-            </div> -->
           </div>
         </div>
-        <div class="w-full lg:w-1/4 px-4 lg:px-2">
+        <div class="w-full lg:w-2/5 px-4 lg:px-2 hidden">
           <div class="grid grid-cols-2 gap-4">
             <div class="rounded-md overflow-hidden relative">
               <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full l object-cover" />
@@ -79,6 +107,17 @@
         </div>
       </div>
 
+      <div class="flex flex-wrap">
+        <div class="w-full px-4 mb-12 lg:px-2">
+          <section class="splide" aria-label="Basic Structure Example">
+            <h1 class="text-2xl font-semibold mb-4 text-slate-900">Top News</h1>
+            <div class="splide__track">
+              <ul class="splide__list"></ul>
+            </div>
+          </section>
+        </div>
+      </div>
+
       <div class="flex flex-wrap listTeams"></div>
     </main>
 
@@ -89,6 +128,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
 
     <script>
       function theme3(e) {
@@ -116,18 +156,66 @@
               </div>
             </div>`;
       }
+      function theme2(e) {
+        return `<li class="splide__slide">
+                  <div class="rounded-md overflow-hidden relative">
+                    <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${e.image.small}" alt="${e.title}" class="h-60 sm:h-64 lg:h-72 w-full l object-cover" />
+                    <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
+                      <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xss md:text-xs font-bold rounded-sm">${moment(e.isoDate).lang('id').format('Do MMM YYYY, LT')}</span>
+                      <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
+                        <h1 class="text-white font-bold text-sm"><a target="_blank" href="${e.link}">${e.title}</a></h1>
+                      </div>
+                    </div>
+                  </div>
+                </li>`;
+      }
 
       fetch('https://berita-indo-api.vercel.app/v1/cnn-news/')
         .then((response) => response.json())
         .then((response) => {
           // console.log(article);
-          const article1 = response.data.slice(6, 8);
+          const article1 = response.data.slice(6, 15);
           let template1 = '';
           article1.forEach((element1) => {
-            template1 += theme1(element1);
+            template1 += theme2(element1);
           });
-          const listTeams1 = document.querySelector('.listTeams1');
+          const listTeams1 = document.querySelector('.splide__list');
           listTeams1.innerHTML = template1;
+
+          var splide = new Splide('.splide', {
+            // type: 'loop',
+            perPage: 7,
+            perMove: 1,
+            focus: 0,
+            gap: 10,
+            interval: 2000,
+            speed: 1000,
+            omitEnd: true,
+            classes: {
+              pagination: 'splide__pagination kentut-pagination',
+              page: 'splide__pagination__page kentut-class-page',
+            },
+            // autoplay: true,
+            breakpoints: {
+              640: {
+                perPage: 2,
+              },
+              768: {
+                perPage: 3,
+              },
+              1024: {
+                perPage: 4,
+              },
+              1280: {
+                perPage: 5,
+              },
+              1536: {
+                perPage: 6,
+              },
+            },
+          });
+
+          splide.mount();
 
           const article3 = response.data.slice(0, 5);
           let template3 = '';
