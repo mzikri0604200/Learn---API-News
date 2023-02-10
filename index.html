@@ -38,68 +38,53 @@
       }
       .splide__arrow svg {
         fill: #14b8a6;
-        height: 1.2em;
-        width: 1.2em;
+        height: 1em;
+        width: 1em;
       }
       .splide__arrow {
-        background: #99f6e4;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background: white;
         top: 5%;
         transform: translateY(-50%);
       }
     </style>
   </head>
   <body>
-    <header class="container mx-auto my-3 bg-">
-      <h1 class="text-3xl text-center font-bold underline">TOP HEADLINE</h1>
-    </header>
-    <main class="container mx-auto">
+    <main class="container mx-auto my-3">
       <div class="flex flex-wrap mb-6">
-        <div class="w-full lg:w-3/5 px-4 lg:px-2">
-          <div class="rounded-md overflow-hidden relative">
-            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${e.image.small}" class="w-full" style="object-fit: cover" alt="${e.title}" />
-            <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
-              <div>
-                <small class="px-2 py-1 text-slate-900 bg-slate-100/80 text-xs font-bold rounded-sm">27 Jan 2023, 09.36</small>
-              </div>
-              <h1 class="text-md text-white font-bold sm:text-sm"><a target="_blank" href="${e.link}"> Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP </a></h1>
-            </div>
-          </div>
+        <div class="w-full flex flex-col lg:w-1/2 mb-4 lg:mb-0 lg:px-2">
+          <h1 class="text-3xl h-fit font-bold underline underline-offset-8 mb-5">Featured News</h1>
+          <div class="featured-news h-full"></div>
         </div>
-        <div class="w-full lg:w-2/5 px-4 lg:px-2 hidden">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-md overflow-hidden relative">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full l object-cover" />
+        <div class="w-full flex flex-col justify-between lg:w-1/2 lg:px-2">
+          <h1 class="text-3xl h-fit font-bold underline underline-offset-8 mb-5">Kumparan News</h1>
+          <div class="h-full flex flex-col">
+            <div class="lg:h-1/2 rounded-md overflow-hidden relative mb-4">
+              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
               <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
-                <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xss font-bold rounded-sm">27 Jan 2023, 09.36</span>
+                <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xs font-bold rounded-sm">27 Jan 2023, 09.36</span>
                 <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
                   <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
                 </div>
               </div>
             </div>
-            <div class="rounded-md overflow-hidden relative">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
-              <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
-                <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xss font-bold rounded-sm">27 Jan 2023, 09.36</span>
-                <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
-                  <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
+            <div class="lg:h-1/2 grid lg:grid-cols-2 grid-cols-1 gap-4">
+              <div class="rounded-md overflow-hidden relative">
+                <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
+                <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
+                  <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xs font-bold rounded-sm">27 Jan 2023, 09.36</span>
+                  <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
+                    <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="rounded-md overflow-hidden relative">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
-              <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
-                <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xss font-bold rounded-sm">27 Jan 2023, 09.36</span>
-                <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
-                  <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
-                </div>
-              </div>
-            </div>
-            <div class="rounded-md overflow-hidden relative">
-              <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
-              <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
-                <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xss font-bold rounded-sm">27 Jan 2023, 09.36</span>
-                <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
-                  <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
+              <div class="rounded-md overflow-hidden relative">
+                <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="https://akcdn.detik.net.id/visual/2022/11/02/bp-akr-lenteng-agung-jaksel-1_169.jpeg?w=360&q=90" class="h-60 w-full object-cover" />
+                <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
+                  <span class="w-fit py-1 px-2 text-slate-900 bg-slate-100/80 text-xs font-bold rounded-sm">27 Jan 2023, 09.36</span>
+                  <div class="h-10 overflow-hidden line-clamp-2 text-ellipsis clamp">
+                    <h1 class="text-white font-bold text-sm"><a target="_blank" href="#">Daftar Harga BBM Terbaru Pertamina, Shell, Vivo dan BP</a></h1>
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,9 +93,9 @@
       </div>
 
       <div class="flex flex-wrap">
-        <div class="w-full px-4 mb-12 lg:px-2">
+        <div class="w-full mb-12 lg:px-2">
           <section class="splide" aria-label="Basic Structure Example">
-            <h1 class="text-2xl font-semibold mb-4 text-slate-900">Top News</h1>
+            <h1 class="text-2xl font-semibold mb-4 text-teal-500 underline underline-offset-8">Top News</h1>
             <div class="splide__track">
               <ul class="splide__list"></ul>
             </div>
@@ -132,7 +117,7 @@
 
     <script>
       function theme3(e) {
-        return `<div class="w-full px-4 mb-6 lg:w-3/12 lg:px-2 sm:w-1/2 sm:mb-4">
+        return `<div class="w-full mb-6 lg:w-3/12 lg:px-2 sm:w-1/2 sm:mb-4">
             <div class="rounded-md overflow-hidden relative">
               <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${e.image.small}" class="w-full" style="object-fit:cover;" alt="${e.title}" />
               <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 flex flex-col justify-between">
@@ -170,10 +155,26 @@
                 </li>`;
       }
 
+      fetch('https://berita-indo-api.vercel.app/v1/kumparan-news')
+        .then((response) => response.json())
+        .then((response) => {
+          const news1 = document.querySelector('.featured-news');
+          const res = response.data[0];
+          news1.innerHTML = `<div class="rounded-md overflow-hidden relative h-full">
+            <img onerror="this.onerror=null; this.src='https://source.unsplash.com/landscape'" src="${res.image.extraLarge}" class="w-full h-full object-cover" alt="${res.title}" />
+            <div class="absolute bg-gradient-to-t from-black top-0 left-0 w-full h-full p-3 lg:p-5 flex flex-col justify-between">
+              <div>
+                <small class="px-2 py-1 text-slate-900 bg-slate-100/80 lg:text-base text-xs font-bold rounded-sm">${moment(res.isoDate).lang('id').format('Do MMM YYYY, LT')}</small>
+              </div>
+              <h1 class="lg:text-2xl text-white font-bold text-sm"><a target="_blank" href="${res.link}">${res.title}</a></h1>
+            </div>
+          </div>`;
+          // console.log(getdata1);
+        });
+
       fetch('https://berita-indo-api.vercel.app/v1/cnn-news/')
         .then((response) => response.json())
         .then((response) => {
-          // console.log(article);
           const article1 = response.data.slice(6, 15);
           let template1 = '';
           article1.forEach((element1) => {
@@ -182,7 +183,7 @@
           const listTeams1 = document.querySelector('.splide__list');
           listTeams1.innerHTML = template1;
           var splide = new Splide('.splide', {
-            // type: 'loop',
+            type: 'loop',
             perPage: 7,
             perMove: 1,
             focus: 0,
@@ -194,7 +195,7 @@
               pagination: 'splide__pagination kentut-pagination',
               page: 'splide__pagination__page kentut-class-page',
             },
-            // autoplay: true,
+            autoplay: true,
             breakpoints: {
               640: {
                 perPage: 2,
